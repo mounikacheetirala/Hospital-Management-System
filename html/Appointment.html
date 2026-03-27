@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Appointment - CityCare Hospital</title>
+<link rel="stylesheet" href="../CSS/Appointment.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<!-- HEADER -->
+<header>
+    <div class="logo">🏥 CityCare Hospital</div>
+    <nav>
+        <a href="HomePage.html">Home</a>
+        <a href="AboutUs.html">About</a>
+        <a href="Departments.html">Departments</a>
+        <a href="Doctors.html">Doctors</a>
+        <a href="Appointment.html">Appointments</a>
+        <a href="Contact.html">Contact</a>
+    </nav>
+    <div class="auth-buttons">
+        <button onclick="toggleDarkMode()" class="dark-btn">🌙</button>
+        <a href="../HTML/PatientLogin.html" class="login-btn">Login</a>
+        <a href="../HTML/PatientRegistration.html" class="register-btn">Register</a>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="../IMAGES/appointment.avif" alt="apointment" class="hero-img">
+    <h1>Book Your Appointment</h1>
+    <p>Schedule a visit with our expert doctors</p>
+</section>
+
+<!-- APPOINTMENT FORM -->
+<section class="appointment-section">
+    <div class="appointment-card">
+        <h2>Fill Your Details</h2>
+        <form id="appointmentForm">
+            <div class="form-group">
+                <input type="text" id="name" name="name" required>
+                <label>Name</label>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" name="email" required>
+                <label>Email</label>
+            </div>
+            <div class="form-group">
+                <input type="tel" id="phone" name="phone" required>
+                <label>Phone</label>
+            </div>
+            <div class="form-group">
+                <select id="department" name="department" required>
+                    <option value="" disabled selected>Select Department</option>
+                    <option value="cardiology">Cardiology</option>
+                    <option value="neurology">Neurology</option>
+                    <option value="orthopedics">Orthopedics</option>
+                    <option value="pediatrics">Pediatrics</option>
+                </select>
+                <label>Department</label>
+            </div>
+              <div class="form-group">
+                <select id="doctor" name="doctor" required>
+                    <option value="" disabled selected>Select Doctor</option>
+                    <option value="Dr. Sharma">Dr. Sharma</option>
+                    <option value="Dr. Reddy">Dr. Reddy</option>
+                    <option value="Dr. Mehta">Dr. Mehta</option>
+                    <option value="Dr. Verma">Dr. Verma</option>
+                </select>
+                <label>Doctor</label>
+            </div>
+            <div class="form-group">
+                <input type="date" id="date" name="date" required>
+                <label>Date</label>
+            </div>
+            <div class="form-group">
+                <input type="time" id="time" name="time" required>
+                <label>Time</label>
+            </div>
+            <button type="submit">Book Appointment</button>
+        </form>
+    </div>
+</section>
+<!-- SUCCESS POPUP -->
+<div id="successPopup">
+    <div class="popup-content">
+        <h3>✅ Appointment Booked!</h3>
+        <p>Thank you for scheduling your visit. We will contact you soon.</p>
+        <button id="closePopup">Close</button>
+    </div>
+</div>
+<!-- FOOTER -->
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- About -->
+    <div class="footer-box">
+      <h3>🏥 CityCare Hospital</h3>
+      <p>
+        Providing advanced healthcare with modern technology,
+        expert doctors, and compassionate patient care.
+      </p>
+
+      
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-box">
+      <h4>Quick Links</h4>
+       <a href="HomePage.html">Home</a>
+        <a href="AboutUs.html">About</a>
+        <a href="Departments.html">Departments</a>
+        <a href="Doctors.html">Doctors</a>
+        <a href="Appointment.html">Appointments</a>
+        <a href="Contact.html">Contact</a>
+    </div>
+
+    <!-- Services -->
+    <div class="footer-box">
+      <h4>Our Services</h4>
+      <p>Cardiology</p>
+      <p>Emergency Care</p>
+      <p>Orthopedics</p>
+      <p>Pediatrics</p>
+      <p>Diagnostics</p>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer-box">
+      <h4>Contact Us</h4>
+      <p>📍 Bangalore, India</p>
+      <p>📞 +91 98765 43210</p>
+      <p>✉ info@citycare.com</p>
+      <p>🕒 Open 24/7</p>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="footer-box">
+      <h4>Subscribe</h4>
+      <p>Get health tips & updates</p>
+      <input type="email" placeholder="Enter email">
+      <button class="subscribe-btn">Subscribe</button>
+    </div>
+
+  </div>
+
+  <!-- Accreditation -->
+  <div class="accreditation">
+    <span>✔ NABH Accredited</span>
+    <span>✔ ISO Certified</span>
+    <span>✔ Trusted Healthcare Provider</span>
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 CityCare Hospital | All Rights Reserved
+  </div>
+
+</footer>
+<!-- TOP BUTTON -->
+<button id="topBtn">↑</button>
+
+<script>
+const topBtn = document.getElementById("topBtn");
+window.onscroll = () => { topBtn.style.display = window.scrollY > 200 ? "block" : "none"; };
+topBtn.onclick = () => { window.scrollTo({top:0, behavior:'smooth'}); };
+
+document.getElementById("appointmentForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const department = document.getElementById("department").value;
+    const doctor = document.getElementById("doctor").value;
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
+
+    alert(
+        "✅ Appointment Booked Successfully!\n\n" +
+        "Patient Name: " + name + "\n" +
+        "Department:"+department+ "\n" +
+        "Doctor: " + doctor + "\n" +
+        "Date: " + date + "\n" +
+        "Time: " + time
+    );
+});
+// Dark Mode (optional)
+
+function toggleDarkMode(){
+    document.body.classList.toggle("dark-mode");
+
+    if(document.body.classList.contains("dark-mode")){
+        localStorage.setItem("darkMode","enabled");
+    }else{
+        localStorage.setItem("darkMode","disabled");
+    }
+}
+window.onload = function(){
+
+    if(localStorage.getItem("darkMode") === "enabled"){
+        document.body.classList.add("dark-mode");
+    }
+
+}
+</script>
+
+</body>
+</html>
